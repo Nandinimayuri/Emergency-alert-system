@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SafeGuarda | Emergency Alert System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="sidebar">
+        <h2>SAFEGUARD</h2>
+        <ul>
+            <li class="nav-item active" onclick="showPage('home')"><i class="fas fa-home"></i> Home</li>
+            <li class="nav-item" onclick="showPage('login')"><i class="fas fa-sign-in-alt"></i> Login/Signup</li>
+            <li class="nav-item" onclick="showPage('contacts')"><i class="fas fa-phone"></i> Emergency Contacts</li>
+            <li class="nav-item" onclick="showPage('history')"><i class="fas fa-history"></i> History</li>
+            <li class="nav-item" onclick="showPage('admin')"><i class="fas fa-user-shield"></i> Admin</li>
+        </ul>
+        
+    </nav>
+
+    <main class="content">
+        <!-- Home -->
+        <section id="home" class="page active">
+            <div class="glass-card text-center">
+                <h1>Emergency Alert</h1>
+                <p>Ensuring safety for every woman. Press SOS in emergency.</p>
+                
+                <div class="sos-wrapper">
+                    <button class="sos-btn" onclick="handleSOS()">SOS</button>
+                    <div class="pulse-effect"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Auth -->
+        <section id="login" class="page">
+            <div class="glass-card narrow">
+                <div id="login-form">
+                    <h2>Login</h2>
+                    <input type="text" id="l-user" placeholder="Username">
+                    <input type="password" id="l-pass" placeholder="Password">
+                    <button class="btn-main" onclick="login()">Login</button>
+                    <p class="toggle-p">new user? <span onclick="toggleAuth(true)">signup option</span></p>
+                </div>
+                <div id="signup-form" style="display:none">
+                    <h2>Signup</h2>
+                    <input type="text" id="s-user" placeholder="Username">
+                    <input type="password" id="s-pass" placeholder="Password">
+                    <input type="number" id="s-pin" placeholder="Pincode">
+                    <input type="number" id="s-age" placeholder="Age">
+                    <button class="btn-main" onclick="signup()">Signup</button>
+                    <p id="signup-msg" class="success-text"></p>
+                    <p class="toggle-p">Already a user? <span onclick="toggleAuth(false)">Login here</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contacts -->
+        <section id="contacts" class="page">
+            <div class="glass-card">
+                <h2>Emergency Contacts</h2>
+                <div class="input-row">
+                    <input type="text" id="c-name" placeholder="Name">
+                    <input type="text" id="c-phone" placeholder="Phone">
+                    <button class="btn-main" style="width:100px; margin:0" onclick="addContact()">Add</button>
+                </div>
+                <table class="table">
+                    <thead><tr><th>Name</th><th>Phone Number</th><th>Action</th></tr></thead>
+                    <tbody id="contact-list"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- History -->
+        <section id="history" class="page">
+            <div class="glass-card">
+                <h2>Alert Logs</h2>
+                <table class="table">
+                    <thead><tr><th>Timestamp</th><th>Status</th><th>Map View</th></tr></thead>
+                    <tbody id="history-list"></tbody>
+                </table>
+            </div>
+        </section>
+
+<!-- Project Features Section -->
+        <div class="features-container">
+            <h2 class="section-title">System Features</h2>
+            <div class="features-grid">
+                
+                <div class="feature-card">
+                    <i class="fas fa-location-arrow"></i>
+                    <h3>Live GPS Tracking</h3>
+                    <p>Automatically shares your precise live location with pre-set emergency contacts and the nearest police station.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-bell"></i>
+                    <h3>Instant Alerts</h3>
+                    <p>Sends immediate SMS and App notifications to your family with a direct link to your coordinates.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-microphone-alt"></i>
+                    <h3>Audio Recording</h3>
+                    <p>Once SOS is triggered, the system automatically starts recording 30 seconds of ambient audio as evidence.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Safe Zone Finder</h3>
+                    <p>Uses AI to navigate you to the nearest "Safe Zones" like hospitals, 24/7 pharmacies, or police kiosks.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-user-secret"></i>
+                    <h3>Discreet Mode</h3>
+                    <p>Allows you to trigger alerts via volume button patterns even when the phone screen is locked.</p>
+                </div>
+
+                <div class="feature-card">
+                    <i class="fas fa-history"></i>
+                    <h3>Incident Logs</h3>
+                    <p>Maintains a secure, encrypted history of all alerts and location paths for legal and safety reporting.</p>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+        <!-- Admin -->
+       <section id="admin" class="page">
+            <div class="glass-card">
+                <h2>Admin Personnel Dashboard</h2>
+                <div class="admin-grid">
+                    <div class="admin-box"><h4>Jallela.Nandini mayuri</h4><p>n220011@rguktn.ac.in</p></div>
+                    <div class="admin-box"><h4>Annamnedi.Lakshmi durga</h4><p>n221017@rguktn.ac.in</p></div>
+                    <div class="admin-box"><h4>Mundlamuri.Jesmitha</h4><p>n221021@rguktn.ac.in</p></div>
+                    <div class="admin-box"><h4>Kunam.Amani</h4><p>n221013@rguktn.ac.in</p></div>
+                </div>
+            </div>
+       </section>
+    </main>
+
+    <audio id="sos-sound" src="https://www.soundjay.com/buttons/beep-01a.mp3"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
