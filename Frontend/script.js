@@ -18,7 +18,11 @@ function showPage(id) {
 
     if (id === 'contacts') loadContacts();
     if (id === 'history') loadHistory();
-    document.getElementById('user-display').innerText = activeUser ? `User: ${activeUser}` : "Logged Out";
+    // document.getElementById('user-display').innerText = activeUser ? `User: ${activeUser}` : "Logged Out";
+    const userDisplay = document.getElementById('user-display');
+    if(userDisplay){
+        userDisplay.innerText = activeUser ? `User: ${activeUser}` : "Logged Out";
+    }
 }
 
 function toggleAuth(isSignup) {
