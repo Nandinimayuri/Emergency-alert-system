@@ -1,0 +1,16 @@
+[
+  {
+    "username": "myri",
+    "age": "32",
+    "pincode": "523101",
+    "number": "234",
+    "password": "asdf",
+    "contacts": [
+      {
+        "name": "ammulu",
+        "number": "+917989295653",
+        "carrierDomain": "@jio.com"
+      }
+    ]
+  }
+]
